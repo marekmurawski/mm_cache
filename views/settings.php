@@ -25,9 +25,9 @@ if (!defined('IN_CMS')) {
                 <td class="help"><?php echo __('Set the extension for cache files (eg. ".cache", ".php")'); ?></td>
             </tr>
             <tr>
-                <td class="label"><label for="default_timeout"><?php echo __('Default timeout'); ?>: </label></td>
+                <td class="label"><label for="default_lifetime"><?php echo __('Default timeout'); ?>: </label></td>
                 <td class="field">
-                    <input type="text" value="<?php echo $default_timeout ?>" name="default_timeout" id="default_timeout" />
+                    <input type="text" value="<?php echo $default_timeout ?>" name="default_lifetime" id="default_lifetime" />
                 </td>
                 <td class="help"><?php echo __('Default cache entry timeout in seconds. (eg. 1 day = 86400 seconds). This will be used as a default value for cache and fragments.'); ?></td>
             </tr>
