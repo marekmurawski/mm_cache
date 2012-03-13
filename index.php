@@ -7,7 +7,7 @@
  */
 define('MM_CACHE_PLUGIN_DIR', realpath(CORE_ROOT).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'mm_cache');
 
-require_once MM_CACHE_PLUGIN_DIR.DIRECTORY_SEPARATOR.'mmCache.php';
+require_once MM_CACHE_PLUGIN_DIR.DIRECTORY_SEPARATOR.'lib/mmCache.php';
 
 Plugin::setInfos(array(
 	'id'          => 'mm_cache',

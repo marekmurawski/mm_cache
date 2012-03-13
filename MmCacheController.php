@@ -83,21 +83,30 @@ class MmCacheController extends PluginController {
     /**
      * Action to clear the cache
      * */
-    public function clearcache() {
+    public function clearcacheall() {
         if (!MmCache::getInstance()->clean('all')) {
-            Flash::set('error', __('Cache has not been cleared!'));
+            Flash::set('error', __('All cache entries have NOT been cleared!'));
         } else {
-            Flash::set('success', __('Cache has been cleared!'));
+            Flash::set('success', __('All cache entries have been cleared!'));
         }
 
         redirect(get_url('plugin/mm_cache'));
     }
+    
+    /**
+     * Action to clear the cache
+     * */
+    public function clearcacheold() {
+        if (!MmCache::getInstance()->clean('old')) {
+            Flash::set('error', __('Expired cache entries have NOT been cleared!'));
+        } else {
+            Flash::set('success', __('Expired cache entries have been cleared!'));
+        }
+        redirect(get_url('plugin/mm_cache'));
+    }
 
     /**
-     * Settings for Tagger to change specific features
-     *
-     * @since 1.1.0
-     *
+     * Settings for mmCache to change specific features
      */
     public function settings() {
         $settings = Plugin::getAllSettings('mm_cache');

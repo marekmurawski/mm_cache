@@ -42,6 +42,6 @@ if (!defined('IN_CMS')) {
 
 
     <p class="buttons">
-        <a href="<?php echo get_url('plugin/mm_cache/clearcacheall') ?>">Clear expired entries</a>
-        <a href="<?php echo get_url('plugin/mm_cache/clearcacheold') ?>">Clear all entries</a>
+        <a href="<?php echo get_url('plugin/mm_cache/clearcacheold') ?>">Clear expired entries</a>
+        <a href="<?php echo get_url('plugin/mm_cache/clearcacheall') ?>">Clear all entries</a>
     </p>
