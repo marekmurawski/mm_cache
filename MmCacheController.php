@@ -1,13 +1,17 @@
 <?php
 
 /**
- * Plugin AS Cache Controller
+ * Plugin mmCache Controller
+ * 
+ * Inspired by AS Cache by Gilles Doge and Kohana Framework
+ * Fragment helper
  *
- * @package frog
+ * @package Wolf
  * @subpackage plugins
+ * @author Marek Murawski <http://www.marekmurawski.pl> 
  * @author Gilles Doge <gde@antistatique.net>, Antistatique.net
- * @version 0.2 SVN: $Id: AsCacheController.php 132 2008-09-12 11:06:16Z gde $
- * */
+ * 
+ */
 class MmCacheController extends PluginController {
 
     public function __construct() {
@@ -37,32 +41,31 @@ class MmCacheController extends PluginController {
         $iterator = new RecursiveDirectoryIterator($rootDir);
         foreach (new RecursiveIteratorIterator($iterator) as $filename => $cur) {
 
-            $age        = intval($tnow - $cur->getMTime());
-            $fname      = str_replace($rootDir, '', $filename);
-            $fsize      = $cur->getSize();
+            $age = intval($tnow - $cur->getMTime());
+            $fname = str_replace($rootDir, '', $filename);
+            $fsize = $cur->getSize();
 
-            $keyname    = substr($fname, 1, -strlen($extension));
-            $timeout    = MmCache::getInstance()->getTimeout($keyname);
-            $ttl        = intval($timeout - $tnow);
-            
+            $keyname = substr($fname, 1, -strlen($extension));
+            $timeout = MmCache::getInstance()->getTimeout($keyname);
+            $ttl = intval($timeout - $tnow);
+
             if ($timeout > 0) {
                 $bytesTotalValid+=$fsize;
                 $validFilesCount++;
-                $lifetime   = intval($age+$ttl);
+                $lifetime = intval($age + $ttl);
             } else {
                 $bytesTotalExpired+=$fsize;
                 $expiredFilesCount++;
-                $lifetime   = 'expired';
+                $lifetime = 'expired';
             }
 
             $cacheFiles[] = array(
-                'valid'    => ($timeout > 0),
-                'name'     => $fname,
+                'valid' => ($timeout > 0),
+                'name' => $fname,
                 'fullname' => $filename,
-                'size'     => $fsize,
-                'updated'  => $cur->getMTime(),
-                'age'      => $age,
-                'ttl'      => $ttl,
+                'size' => $fsize,
+                'updated' => $cur->getMTime(),
+                'age' => $age,
                 'lifetime' => $lifetime,
             );
         } // foreach
@@ -81,7 +84,7 @@ class MmCacheController extends PluginController {
     }
 
     /**
-     * Action to clear the cache
+     * Action to clear all cache entries
      * */
     public function clearcacheall() {
         if (!MmCache::getInstance()->clean('all')) {
@@ -92,9 +95,9 @@ class MmCacheController extends PluginController {
 
         redirect(get_url('plugin/mm_cache'));
     }
-    
+
     /**
-     * Action to clear the cache
+     * Action to clear expired cache entries
      * */
     public function clearcacheold() {
         if (!MmCache::getInstance()->clean('old')) {

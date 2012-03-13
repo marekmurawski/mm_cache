@@ -5,7 +5,7 @@ if (!defined('IN_CMS')) {
 }
 ?>
 
-<h1><?php echo __('Cache administration') ?></h1>
+<h1><?php echo __('mmCache administration') ?></h1>
 <table class="index" cellpadding="0" cellspacing="0" border="0">
     <thead>
         <tr>
