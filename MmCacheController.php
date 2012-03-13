@@ -115,15 +115,20 @@ class MmCacheController extends PluginController {
     public function clearcachebyname() {
         (isset($_POST['name'])) ? $name = $_POST['name'] : $name = false;
         if ($name) {
-            MmCache::getInstance()->cleanByName($name);
-            Flash::set('success', __('Expired cache entries have NOT been cleared!'));
-            Flash::set('success', $name); 
+            $count = MmCache::getInstance()->cleanByName($name);
+            if ($count) {
+                Flash::set('success', __('Cleared :1 cache entries!', array(':1'=>$count)));
+            } else {
+                Flash::set('error', __('Cache entries with string ":1" NOT found!', array(':1'=>$name)));
+                Flash::set('mmcachesearchname',$name);
+            }
         } else {
             Flash::set('error', __('Please provide a search string to delete cache entries!'));
+            Flash::set('mmcachesearchname',$name);
         }
         redirect(get_url('plugin/mm_cache'));
     }
-    
+
     /**
      * Settings for mmCache to change specific features
      */

@@ -30,7 +30,7 @@ if (!defined('IN_CMS')) {
                 <td><code><?php echo $fdate . '<br/>' . $ftime ?></code></td>
                 <td><div><?php echo $file['age'] ?> s.<div style="float: right;"><?php echo $file['lifetime'] ?></div><div><div id="mmprogresscontainer"><div id="mmprogressbar" style="width: <?php echo $barWidth ?>px"></div></div></td>
                 <td>
-                    <a href="http://multicentrum-jawor.pl/admin/plugin/file_manager/delete/images" onclick="return confirm('Czy na pewno chcesz usunąć? images?');"><img src="/wolf/icons/delete-16.png" alt="skasuj ikonę pliku" title="Usuń plik"></a>
+                    <a href="<?php echo get_url('plugin/mm_cache') ?>"><img src="/wolf/icons/delete-16.png" alt="skasuj ikonę pliku" title="Usuń plik"></a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -49,7 +49,7 @@ if (!defined('IN_CMS')) {
 <form action="<?php echo get_url('plugin/mm_cache/clearcachebyname') ?>" method="POST">
    <p class="content"><?php echo __("The button bellow clear all the cache.") ?></p>
    <p class="buttons">
-      <input type="text" name="name" value="name" />
+      <input type="text" name="name" value="<?php echo Flash::get('mmcachesearchname'); ?>" />
       <input type="submit" class="button" name="commit" accesskey="c" value="<?php echo __('Clear by name') ?>" />
    </p>
 </form>    
