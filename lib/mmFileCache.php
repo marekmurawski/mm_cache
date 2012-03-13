@@ -142,36 +142,39 @@ class MmFileCache {
     }
 
     /**
-     * Cleans the cache by searching string.
+     * Cleans the cache by searching substring in cache filenames.
      *
      * @param  string  The clean mode
-     *                 'all': remove all keys (default)
-     *                 'old': remove all expired keys
      *
      * @return Boolean true if no problem
      */
-    public function cleanByTag($tag = NULL) {
+    public function cleanByName($name = NULL) {
+        //echo $name . '<br/>';
+        //echo 'elo';
+
         if (!is_dir($this->cache_dir)) {
-            return true;
+            return false;
         }
         $pos = strlen(CMS_ROOT . DS . Plugin::getSetting('dir', 'mm_cache'));
-
+        $count = 0;
         $result = true;
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($this->cache_dir)) as $file) {
-
-            if ('all' == $mode || time() > $this->read($file, self::READ_TIMEOUT)) {
                 if (is_dir($file)) {
                     $res = @rmdir($file);
                 } else {
                     $key = substr($file, $pos);
-                    if (strpos($key, $tag)) {
+                    if (strpos($key, $name)) {
                         $res = @unlink($file);
+                        $count++;
+                        echo $file . '<br/>'; $res = true;
                     }
                 }
-                $result = $result && $res;
-            }
+                //$result = $result && $res;
         }
-        return $result;
+        //return $result;
+        //die();    
+        if ($count > 0) return $count; else return false;
+    
     }
 
     /**

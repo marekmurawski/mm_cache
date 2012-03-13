@@ -153,6 +153,17 @@ class mmCache {
     }
 
     /**
+     * Cleans the cache by searching substring in cache filenames.
+     *
+     * @param <string>      The tag - search string in filename
+     *
+     * @return <boolean>    true if no problem
+     */
+    public function cleanByName($name = null) {
+        return $this->cache->cleanByName($name);
+    }
+
+    /**
      * Generates a unique cache key for a string.
      * 
      *

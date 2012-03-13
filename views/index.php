@@ -45,3 +45,11 @@ if (!defined('IN_CMS')) {
         <a href="<?php echo get_url('plugin/mm_cache/clearcacheold') ?>">Clear expired entries</a>
         <a href="<?php echo get_url('plugin/mm_cache/clearcacheall') ?>">Clear all entries</a>
     </p>
+    
+<form action="<?php echo get_url('plugin/mm_cache/clearcachebyname') ?>" method="POST">
+   <p class="content"><?php echo __("The button bellow clear all the cache.") ?></p>
+   <p class="buttons">
+      <input type="text" name="name" value="name" />
+      <input type="submit" class="button" name="commit" accesskey="c" value="<?php echo __('Clear by name') ?>" />
+   </p>
+</form>    

@@ -73,6 +73,7 @@ class MmCacheController extends PluginController {
         $bytesTotalValid = number_format($bytesTotalValid);
         $bytesTotalExpired = number_format($bytesTotalExpired);
 
+
         $this->display('mm_cache/views/index', array(
             'cacheFiles' => $cacheFiles,
             'bytesTotalValid' => $bytesTotalValid,
@@ -108,6 +109,21 @@ class MmCacheController extends PluginController {
         redirect(get_url('plugin/mm_cache'));
     }
 
+    /**
+     * Action to clear cache entries by searching substring in filename
+     * */
+    public function clearcachebyname() {
+        (isset($_POST['name'])) ? $name = $_POST['name'] : $name = false;
+        if ($name) {
+            MmCache::getInstance()->cleanByName($name);
+            Flash::set('success', __('Expired cache entries have NOT been cleared!'));
+            Flash::set('success', $name); 
+        } else {
+            Flash::set('error', __('Please provide a search string to delete cache entries!'));
+        }
+        redirect(get_url('plugin/mm_cache'));
+    }
+    
     /**
      * Settings for mmCache to change specific features
      */
