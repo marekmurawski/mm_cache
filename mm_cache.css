@@ -1,0 +1,16 @@
+#mmprogresscontainer {
+    display: block;
+    margin: 0px;
+    padding: 1px;
+    background-color: #000;
+    height: 10px;
+    width: 160px;
+}
+#mmprogressbar {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    background-color: #f80;
+    height: 10px;
+    width: 1px;
+}
