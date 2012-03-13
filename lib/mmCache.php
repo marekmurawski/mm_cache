@@ -68,8 +68,10 @@ class mmCache {
     /**
      * Sets the cache content.
      *
-     * @param <string>      Data to put in the cache
-     * @param <string>      Internal uniform resource identifier
+     * @param <string>      Cache key name
+     * @param <mixed>       Data to put in the cache
+     * @param <int>         Custom lifetime for cache entry
+     * @param <boolean>     True if data should be serialized
      *
      * @return <boolean>    True, if the data get set successfully otherwise false
      */
@@ -144,7 +146,7 @@ class mmCache {
      *                      'all': remove all keys (default)
      *                      'old': remove all expired keys
      *
-     * @return <Boolean>    true if no problem
+     * @return <boolean>    true if no problem
      */
     public function clean($mode = 'all') {
         return $this->cache->clean($mode);

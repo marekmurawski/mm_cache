@@ -11,14 +11,8 @@
  *
  * @copyright  (c) 2009-2010 Kohana Team
  * @license    http://kohanaframework.org/license
- * @uses       Kohana::cache
  */
 class mmFragment {
-
-    /**
-     * @var  integer  default number of seconds to cache for
-     */
-    //public static $lifetime;
 
     /**
      * @var  array  list of buffer => cache key
@@ -31,7 +25,7 @@ class mmFragment {
      * @param   string   fragment name
      */
     protected static function _cache_key($name) {
-        return 'mmFragment/' . $name;
+        return '.mmFrag/' . $name;
     }
 
     /**
@@ -40,15 +34,15 @@ class mmFragment {
      *
      *     if ( ! Fragment::load('footer')) {
      *         // Anything that is echo'ed here will be saved
-     *         Fragment::save();
+     *         Fragment::save(30); // 30 seconds lifetime for a fragment
      *     }
      *
-     * @param   string   fragment name
-     * @param   integer  fragment cache lifetime
-     * @param   boolean  multilingual fragment support
-     * @return  boolean
+     * @param <string>   Fragment name
+     * @param <integer>  Fragment cache lifetime
+     * 
+     * @return <boolean>
      */
-    public static function load($name, $lifetime = NULL) {
+    public static function load($name) {
         // Get the cache key name
         $cache_key = mmFragment::_cache_key($name);
 
@@ -68,10 +62,14 @@ class mmFragment {
     /**
      * Saves the currently open fragment in the cache.
      *
-     * @return  void
+     * @param <integer>     Current fragment lifetime
+     * 
+     * @return <void>       
+     * 
      */
     public static function save($lifetime = null) {
-
+        
+        // Get default lifetime if not specified
         if (!isset($lifetime)) $lifetime = Plugin::getSetting('default_lifetime', 'mm_cache');
         
         // Get the buffer level        

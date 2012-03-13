@@ -218,6 +218,7 @@ class MmFileCache
     * set the cache directory and create it if not exist
     *
     * @param string path the the cache directory
+    * 
     * @return void
     **/
    public function setCacheDir($cache_dir)
