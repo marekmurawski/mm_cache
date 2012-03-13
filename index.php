@@ -33,14 +33,12 @@ MmCache::getInstance()->init(array(
 
 if (defined('CMS_BACKEND')) { // BACKEND PART
 
-    AutoLoader::addFolder(dirname(__FILE__).'/lib');
-    
+    AutoLoader::addFolder(dirname(__FILE__).'/lib');    
     Observer::observe('page_edit_after_save', 'mm_cache_clear');
-
     Plugin::addController('mm_cache', ' mmCache'); //small little space to avoid tab first-letter-capitalization ;)
 
     function mm_cache_clear() {
-    //  mmCache::getInstance()->
+     MmCache::getInstance()->clean('all');
     }
     
     function mm_trim_key($string,$length,$start,$end)
