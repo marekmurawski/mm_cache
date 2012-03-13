@@ -5,9 +5,9 @@
  * @author Gilles Doge <gde@antistatique.net>
  * @version 0.1 - SVN: $Id: index.php 144 2008-09-30 09:15:30Z gde $
  */
-define('MM_CACHE_PLUGIN_DIR', realpath(CORE_ROOT).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'mm_cache');
+define('MM_CACHE_PLUGIN_DIR', realpath(CORE_ROOT).DS.'plugins'.DS.'mm_cache');
 
-require_once MM_CACHE_PLUGIN_DIR.DIRECTORY_SEPARATOR.'lib/mmCache.php';
+require_once MM_CACHE_PLUGIN_DIR.DS.'lib'.DS.'mmCache.php';
 
 Plugin::setInfos(array(
 	'id'          => 'mm_cache',
