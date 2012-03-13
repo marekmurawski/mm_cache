@@ -22,9 +22,9 @@ Plugin::setInfos(array(
 
 
 // Configure mmCache
-$dir = trim(Plugin::getSetting('mm_cache_dir', 'mm_cache'),'/\\'); // trim slashes from start and end of dir
-$cdl = intval(Plugin::getSetting('mm_cache_default_lifetime', 'mm_cache'));
-$cex = ltrim(Plugin::getSetting('mm_cache_extension', 'mm_cache'),'.');
+$dir = trim(Plugin::getSetting('dir', 'mm_cache'),'/\\'); // trim slashes from start and end of dir
+$cdl = intval(Plugin::getSetting('default_lifetime', 'mm_cache'));
+$cex = ltrim(Plugin::getSetting('extension', 'mm_cache'),'.');
 MmCache::getInstance()->init(array(
    'cache_dir' => CMS_ROOT.DS.$dir,
    'lifetime'  => $cdl,
