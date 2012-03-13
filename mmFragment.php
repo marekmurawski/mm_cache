@@ -72,7 +72,7 @@ class mmFragment {
      */
     public static function save($lifetime = null) {
 
-        if (!isset($lifetime)) $lifetime = Plugin::getSetting ('mm_cache_default_lifetime', 'mm_cache');
+        if (!isset($lifetime)) $lifetime = Plugin::getSetting('default_lifetime', 'mm_cache');
         
         // Get the buffer level        
         $level = ob_get_level();

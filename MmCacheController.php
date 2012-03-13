@@ -25,8 +25,8 @@ class MmCacheController extends PluginController {
     }
 
     public function index() {
-        $rootDir = CMS_ROOT . DS . Plugin::getSetting('mm_cache_dir', 'mm_cache');
-        $extension = Plugin::getSetting('mm_cache_extension', 'mm_cache');
+        $rootDir = CMS_ROOT . DS . Plugin::getSetting('dir', 'mm_cache');
+        $extension = Plugin::getSetting('extension', 'mm_cache');
         clearstatcache();
         $bytesTotalValid = 0;
         $bytesTotalExpired = 0;
