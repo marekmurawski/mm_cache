@@ -1,3 +1,13 @@
+.index .mmage {
+    width: 160px;
+    text-align: center;
+}
+.index .mmupdated {
+    width: 80px;
+}
+.clearcacheform {
+    text-align: right;
+}
 #mmprogresscontainer {
     display: block;
     margin: 0px;
