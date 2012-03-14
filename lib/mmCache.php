@@ -36,13 +36,7 @@
 require_once MM_CACHE_PLUGIN_DIR . DS . 'lib' . DS . 'mmFileCache.php';
 require_once MM_CACHE_PLUGIN_DIR . DS . 'lib' . DS . 'mmFragment.php';
 
-/**
- * mmCache singleton
- *
- * @package plugins/mm_cache
- * @author  Marek Murawski <http://www.marekmurawski.pl>
- * 
- */
+
 class mmCache {
 
     protected static $instance = null;
