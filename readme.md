@@ -5,6 +5,8 @@ mmCache is a general purpose cache plugin for Wolf CMS. It is useful in caching 
 
 Another case of usage would be fetching some **external content from remote server** with slow connection.
 
+For obvious reasons, fragment caching should not be applied to any
+content that contains forms.
 
 Examples
 --------
