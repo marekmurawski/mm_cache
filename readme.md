@@ -24,6 +24,7 @@ The random number is cached for 20 seconds in this example.
 // if the fragment exists in cache it will be echoed
 // if it doesn't exist the inner clause of 'if' statement
 // will be executed
+// notice the exclamation mark in if statement
 if (! mmFragment::load('samplefragment') ) {
 
 // make some output with random number
