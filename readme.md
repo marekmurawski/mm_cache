@@ -22,7 +22,7 @@ The random number is cached for 20 seconds in this example.
 // if the fragment exists in cache it will be echoed
 // if it doesn't exist the inner clause of 'if' statement
 // will be executed
-if (! mmFragment::load('samplefragment')) {
+if (! mmFragment::load('samplefragment') ) {
 
 // make some output with random number
         echo "Random number to be cached: <strong>" . mt_rand(0, 10000) . "</strong><br/>";
@@ -52,7 +52,7 @@ is cached for 18 seconds and the outer number is cached for
 
 ``` php
 <?php
-if (! mmFragment::load('nestedfragmentouter')) {
+if (! mmFragment::load('nestedfragmentouter') ) {
         echo "Outer number: <strong>" . mt_rand(0, 10000) . "</strong><br/>";
                 if (! mmFragment::load('nestedfragmentinner')) {
                 echo "Inner number:  <strong>" . mt_rand(0, 10000) . "</strong><br/>";
@@ -65,7 +65,7 @@ if (! mmFragment::load('nestedfragmentouter')) {
 
 ### 3. Caching whole page content based on uri
 
-You can cache whole page content as a fragment with key defined as the current URI. For security reasons it's highly recommended to generate md5 (or other) hash of uri. This way you avoid filename collisions / security vulnerabilities.
+You can cache whole page content as a fragment with key defined as the current URI. For security reasons it's **highly recommended to generate md5** (or other) hash of uri. This way you avoid filename collisions / security vulnerabilities.
 
 In your layout put this code at the very beginning:
 
@@ -73,7 +73,7 @@ In your layout put this code at the very beginning:
 <?php
 $fragmentKey = 'wholePage/' . md5($_SERVER["REQUEST_URI"]);
 // or 
-// $fragmentKey = $this->url(); // but this way you don't save query strings like ?id=123&p=12 etc.
+// $fragmentKey = md5( $this->url() ); // but this way you don't save query strings like ?id=123&p=12 etc.
 if (! mmFragment::load($fragmentKey)) {
 ?>
 // here you put your layout contents
@@ -89,7 +89,7 @@ mmFragment::save(3600); //save cache of current page for 3600 seconds
 ```
 
 ### 4. Data / variables caching
-In this example we store a variable (array) in cache for 13 seconds.
+In this example we store a variable (array) in cache for 13 seconds. If data is present in Cache it will be assigned to $data during the if-condition examining, if it's not cached we'll execute the code inside if-clause, assign $data values and save it to Cache for 13 seconds. Then $data is displayed regardless of being cached or just-generated.
 
 ``` php
 <?php
@@ -98,7 +98,7 @@ $cache = mmCache::getInstance();
 
 // if there is no cached data for 'sampledata' make something
 // inside the 'if' clause
-if (!$data = $cache->get('sampledata')) {
+if (! $data = $cache->get('sampledata') ) {
 
         // prepare empty array
         $data = array();
