@@ -128,14 +128,15 @@ class MmFileCache {
 
         $result = true;
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($this->cache_dir)) as $file) {
-
-            if ('all' == $mode || time() > $this->read($file, self::READ_TIMEOUT)) {
-                if (is_dir($file)) {
-                    $res = @rmdir($file);
-                } else {
-                    $res = @unlink($file);
+            if (!endsWith($file, '.htaccess')) {
+                if ('all' == $mode || time() > $this->read($file, self::READ_TIMEOUT)) {
+                    if (is_dir($file)) {
+                        $res = @rmdir($file);
+                    } else {
+                        $res = @unlink($file);
+                    }
+                    $result = $result && $res;
                 }
-                $result = $result && $res;
             }
         }
         return $result;

@@ -40,34 +40,36 @@ class MmCacheController extends PluginController {
         $cacheFiles = array();
         $iterator = new RecursiveDirectoryIterator($rootDir);
         foreach (new RecursiveIteratorIterator($iterator) as $filename => $cur) {
+            if (!endsWith($filename, '.htaccess'))
+            {
+                $age = intval($tnow - $cur->getMTime());
+                $fname = str_replace($rootDir, '', $filename);
+                $fsize = $cur->getSize();
 
-            $age = intval($tnow - $cur->getMTime());
-            $fname = str_replace($rootDir, '', $filename);
-            $fsize = $cur->getSize();
+                $keyname = substr($fname, 1, -strlen($extension)-1); // -1 for dot
+                $timeout = MmCache::getInstance()->getTimeout($keyname);
+                $ttl = intval($timeout - $tnow);
 
-            $keyname = substr($fname, 1, -strlen($extension)-1); // -1 for dot
-            $timeout = MmCache::getInstance()->getTimeout($keyname);
-            $ttl = intval($timeout - $tnow);
+                if ($timeout > 0) {
+                    $bytesTotalValid+=$fsize;
+                    $validFilesCount++;
+                    $lifetime = intval($age + $ttl);
+                } else {
+                    $bytesTotalExpired+=$fsize;
+                    $expiredFilesCount++;
+                    $lifetime = 'expired';
+                }
 
-            if ($timeout > 0) {
-                $bytesTotalValid+=$fsize;
-                $validFilesCount++;
-                $lifetime = intval($age + $ttl);
-            } else {
-                $bytesTotalExpired+=$fsize;
-                $expiredFilesCount++;
-                $lifetime = 'expired';
+                $cacheFiles[] = array(
+                    'valid' => ($timeout > 0),
+                    'name' => $fname,
+                    'fullname' => $filename,
+                    'size' => $fsize,
+                    'updated' => $cur->getMTime(),
+                    'age' => $age,
+                    'lifetime' => $lifetime,
+                );
             }
-
-            $cacheFiles[] = array(
-                'valid' => ($timeout > 0),
-                'name' => $fname,
-                'fullname' => $filename,
-                'size' => $fsize,
-                'updated' => $cur->getMTime(),
-                'age' => $age,
-                'lifetime' => $lifetime,
-            );
         } // foreach
 
         $bytesTotalValid = number_format($bytesTotalValid);
