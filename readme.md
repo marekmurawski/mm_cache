@@ -62,7 +62,7 @@ is cached for 18 seconds and the outer number is cached for
                         }
                 mmFragment::save(7); //save outer fragment
         }
-?>
+        ?>
 ```
 
 
@@ -95,11 +95,8 @@ In this example we store a variable (array) in cache for 13 seconds.
         ?>
         <pre>
         <?php 
-        // print the stored or just-prepared data
         print_r($data); 
-        ?>
-        </pre>
-        <?php
         echo "<em>This data expires in: ". ($cache->getTimeout('sampledata') - time()) . " seconds</em>";
         ?>
+        </pre>
 ```
