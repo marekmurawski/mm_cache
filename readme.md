@@ -9,7 +9,7 @@ Another case of usage would be fetching some **external content from remote serv
 Examples
 --------
 
-These are examples of mmFragment an mmCache usage. You can insert following
+These are examples of mmFragment an mmCache usage. You can copy/paste following
 code into your Pages, Snippets or Layouts.
 
 ### 1. Output fragment caching
@@ -63,8 +63,27 @@ if (! mmFragment::load('nestedfragmentouter')) {
 ?>
 ```
 
+### 3. Caching whole page content based on uri
 
-### 3. Data / variables caching
+You can cache whole page content as a fragment with key defined as the current URI. For security reasons it's highly recommended to generate md5 (or other) hash of uri. This way you avoid filename collisions / security vulnerabilities.
+
+In your layout put this code at the very beginning:
+
+``` php
+<?php
+if (! mmFragment::load($this->uri())) {
+?>
+// here you put your layout contents
+```
+
+at the end of your layout put this code:
+``` php
+mmFragment::save(3600); //save cache of current page for 3600 seconds
+}
+?>
+```
+
+### 4. Data / variables caching
 In this example we store a variable (array) in cache for 13 seconds.
 
 ``` php
