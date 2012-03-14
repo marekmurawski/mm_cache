@@ -10,10 +10,19 @@
  * 
  * For details, see:  http://www.opensource.org/licenses/mit-license.php
  */
+
 ?>
-<p class="button"><a href="<?php echo get_url('plugin/mm_cache'); ?>"><img src="<?php echo ICONS_URI; ?>/file-folder-32.png" align="middle" alt="folder icon" /><?php echo __('Cache entries'); ?></a></p>
-<p class="button"><a href="<?php echo get_url('plugin/mm_cache/settings'); ?>"><img src="<?php echo ICONS_URI; ?>/settings-32.png" align="middle" alt="settings icon" /><?php echo __('Settings'); ?></a></p>
-<p class="button"><a href="<?php echo get_url('plugin/mm_cache/documentation'); ?>"><img src="<?php echo ICONS_URI; ?>/file-unknown-32.png" align="middle" alt="page icon" /><?php echo __('Documentation'); ?></a></p>
+
+
+ <p class="button"><a href="<?php echo get_url('plugin/mm_cache'); ?>"><img src="<?php echo ICONS_URI; ?>/file-folder-32.png" align="middle" alt="folder icon" /><?php echo __('List cache entries'); ?></a></p>
+ 
+ <p class="button"><a href="<?php echo get_url('plugin/mm_cache/clearcacheold') ?>"><img src="/wolf/icons/delete-32.png" align="middle" alt="page icon" />Clear expired entries</a></p>
+ 
+ <p class="button"><a href="<?php echo get_url('plugin/mm_cache/clearcacheall') ?>"><img src="/wolf/icons/delete-32.png" align="middle" alt="page icon" />Clear all entries</a></p>
+
+ <p class="button"><a href="<?php echo get_url('plugin/mm_cache/settings'); ?>"><img src="<?php echo ICONS_URI; ?>/settings-32.png" align="middle" alt="settings icon" /><?php echo __('Settings'); ?></a></p>
+
+ <p class="button"><a href="<?php echo get_url('plugin/mm_cache/documentation'); ?>"><img src="<?php echo ICONS_URI; ?>/file-unknown-32.png" align="middle" alt="page icon" /><?php echo __('Documentation'); ?></a></p>
 <div class="box">
     <h2><?php echo __('About mmCache'); ?></h2>
     <p>
