@@ -80,6 +80,7 @@ if (! mmFragment::load($fragmentKey)) {
 ```
 
 at the end of your layout put this code:
+
 ``` php
 mmFragment::save(3600); //save cache of current page for 3600 seconds
 }
