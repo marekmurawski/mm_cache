@@ -149,6 +149,12 @@ class MmCacheController extends PluginController {
         $this->display('mm_cache/views/settings', $settings);
     }
 
+    /**
+     * Settings for mmCache to change specific features
+     */
+    public function documentation() {
+        $this->display('mm_cache/views/documentation');
+    }    
 }
 
 // END public class CacheController

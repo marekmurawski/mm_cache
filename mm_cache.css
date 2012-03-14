@@ -24,3 +24,16 @@
     height: 10px;
     width: 1px;
 }
+.documentation pre {
+    background-color: #ddd;
+    border: 1px solid #888;
+    margin-left: 40px;
+    margin-right: 40px;
+    overflow-x: scroll;
+}
+.documentation h3 {
+    margin-top: 40px !important;
+}
+.documentation p {
+    margin-right: 30%;
+}
