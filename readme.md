@@ -71,7 +71,10 @@ In your layout put this code at the very beginning:
 
 ``` php
 <?php
-if (! mmFragment::load($this->uri())) {
+$fragmentKey = $_SERVER["REQUEST_URI"];
+// or 
+// $fragmentKey = $this->url(); // but this way you don't save query strings like ?id=123&p=12 etc.
+if (! mmFragment::load($fragmentKey)) {
 ?>
 // here you put your layout contents
 ```
