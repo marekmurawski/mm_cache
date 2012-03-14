@@ -71,7 +71,7 @@ In your layout put this code at the very beginning:
 
 ``` php
 <?php
-$fragmentKey = $_SERVER["REQUEST_URI"];
+$fragmentKey = 'wholePage/' . md5($_SERVER["REQUEST_URI"]);
 // or 
 // $fragmentKey = $this->url(); // but this way you don't save query strings like ?id=123&p=12 etc.
 if (! mmFragment::load($fragmentKey)) {
@@ -82,6 +82,7 @@ if (! mmFragment::load($fragmentKey)) {
 at the end of your layout put this code:
 
 ``` php
+<?php
 mmFragment::save(3600); //save cache of current page for 3600 seconds
 }
 ?>
