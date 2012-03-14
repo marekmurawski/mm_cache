@@ -1,10 +1,12 @@
 <?php
 /**
+ * mmCache
+ * 
  * Cache plugin for WolfCMS
  *
+ * @author Marek Murawski <http://marekmurawski.pl>
  * @author Gilles Doge <gde@antistatique.net>
- * @version 0.1 - SVN: $Id: index.php 144 2008-09-30 09:15:30Z gde $
- * Copyright (c) 2012 Marek Murawski
+ * @version 0.0.1
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal

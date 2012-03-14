@@ -6,8 +6,6 @@
  * Inspired by AS Cache by Gilles Doge and Kohana Framework
  * Fragment helper
  *
- * @package Wolf
- * @subpackage plugins
  * @author Marek Murawski <http://www.marekmurawski.pl> 
  * @author Gilles Doge <gde@antistatique.net>, Antistatique.net
  * 

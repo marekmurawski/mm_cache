@@ -1,6 +1,10 @@
 <?php
 
 /**
+ * mmFragment Class
+ * 
+ * Inspired by Kohana Fragment helper.
+ * 
  * View fragment caching. This is primarily used to cache small parts of a view
  * that rarely change. For instance, you may want to cache the footer of your
  * template because it has very little dynamic content. Or you could cache a
@@ -9,6 +13,7 @@
  * For obvious reasons, fragment caching should not be applied to any
  * content that contains forms.
  *
+ * @author     Marek Murawski <http://marekmurawski.pl>
  * @copyright  (c) 2009-2010 Kohana Team
  * @license    http://kohanaframework.org/license
  */
@@ -91,14 +96,12 @@ class mmFragment {
     }
 
     /**
-     * Delete a cached fragment.
+     * Retrieves the timeout.
      *
-     *     Fragment::delete($key);
+     * @param  <string>     Fragment name
      *
-     * @param   string   fragment name
-     * @param   boolean  multilingual fragment support
-     * @return  void
-     */
+     * @return <int>        The timeout datetime
+     */    
     public static function getTimeout($name) {
         return mmCache::getInstance()->getTimeout(mmFragment::_cache_key($name));
     }
