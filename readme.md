@@ -12,7 +12,7 @@ Examples
 --------
 
 These are examples of mmFragment an mmCache usage. You can insert following
-code into your Pages, Snippe
+code into your Pages, Snippets or Layouts.
 
 ### 1. Output fragment caching
 
