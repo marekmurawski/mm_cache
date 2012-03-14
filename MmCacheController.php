@@ -45,7 +45,7 @@ class MmCacheController extends PluginController {
             $fname = str_replace($rootDir, '', $filename);
             $fsize = $cur->getSize();
 
-            $keyname = substr($fname, 1, -strlen($extension));
+            $keyname = substr($fname, 1, -strlen($extension)-1); // -1 for dot
             $timeout = MmCache::getInstance()->getTimeout($keyname);
             $ttl = intval($timeout - $tnow);
 
@@ -134,6 +134,18 @@ class MmCacheController extends PluginController {
      */
     public function settings() {
         $settings = Plugin::getAllSettings('mm_cache');
+        if ($_POST) {
+            $settings = $_POST;
+            $settings['dir'] = trim($settings['dir'],'/\\'); // trim slashes from start and end of dir
+            $settings['default_lifetime'] = intval($settings['default_lifetime']);
+            $settings['extension'] = ltrim($settings['extension'],'.');
+            if (Plugin::setAllSettings($settings, 'mm_cache')) {
+                Flash::set('success', __('mmCache settings saved').print_r($settings,true));
+            } else {
+                Flash::set('error', __('Error saving settings'));
+            }
+            redirect(get_url('plugin/mm_cache/settings'));
+        }
         $this->display('mm_cache/views/settings', $settings);
     }
 

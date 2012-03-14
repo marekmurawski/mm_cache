@@ -4,7 +4,27 @@
  *
  * @author Gilles Doge <gde@antistatique.net>
  * @version 0.1 - SVN: $Id: index.php 144 2008-09-30 09:15:30Z gde $
+ * Copyright (c) 2012 Marek Murawski
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is furnished
+ * to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
  */
+
 define('MM_CACHE_PLUGIN_DIR', realpath(CORE_ROOT).DS.'plugins'.DS.'mm_cache');
 
 require_once MM_CACHE_PLUGIN_DIR.DS.'lib'.DS.'mmCache.php';
@@ -22,9 +42,9 @@ Plugin::setInfos(array(
 
 
 // Configure mmCache
-$dir = trim(Plugin::getSetting('dir', 'mm_cache'),'/\\'); // trim slashes from start and end of dir
-$cdl = intval(Plugin::getSetting('default_lifetime', 'mm_cache'));
-$cex = ltrim(Plugin::getSetting('extension', 'mm_cache'),'.');
+$dir = Plugin::getSetting('dir', 'mm_cache'); // trim slashes from start and end of dir
+$cdl = Plugin::getSetting('default_lifetime', 'mm_cache');
+$cex = Plugin::getSetting('extension', 'mm_cache');
 MmCache::getInstance()->init(array(
    'cache_dir' => CMS_ROOT.DS.$dir,
    'lifetime'  => $cdl,
