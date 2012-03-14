@@ -1,17 +1,18 @@
 mmCache plugin for Wolf CMS
 ==============
 
-
-
-
-Examples
---------
-
 This is an example snippet to demonstrate the usages of mmCache plugin. 
 It is useful in caching computationally intensive operations like **rendering 
 multi-level menus**, which can generate many database requests.
 Another case would be fetching some **content from remote server** in case
 of slow connection.
+
+
+Examples
+--------
+
+These are examples of mmFragment an mmCache usage. You can insert following
+code into your Pages, Snippe
 
 ### 1. Output fragment caching
 
