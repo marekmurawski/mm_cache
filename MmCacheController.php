@@ -161,7 +161,7 @@ class MmCacheController extends PluginController {
 				mkdir(CMS_ROOT . DS . $settings['dir']);
 			};
 			file_put_contents(CMS_ROOT . DS . $settings['dir'] . DS . '.htaccess', 'DENY FROM ALL');
-			Flash::set('success', 'mmCache plugin successfully activated');
+			Flash::set('info', __('Successfully created :dir directory', array(':dir'=>CMS_ROOT . DS . $settings['dir'])));
 		} catch (Exception $e) {
 			Flash::set('error', 'Error while creating directory and/or .htaccess file!' . '<br/>' . $e->getMessage());
 		}
