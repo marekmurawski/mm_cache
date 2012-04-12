@@ -55,7 +55,7 @@ if (Plugin::isEnabled('mm_cache')) {
 	'lifetime'  => $cdl,
 	'extension' => '.'.$cex,
 	));
-}
+
 
 if (defined('CMS_BACKEND')) { // BACKEND PART
 
@@ -82,3 +82,5 @@ if (defined('CMS_BACKEND')) { // BACKEND PART
 } else { // FRONTEND PART BELOW
 
 } // end of FRONTEND PART
+
+} // end of if Plugin::isEnabled
