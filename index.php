@@ -43,15 +43,27 @@ Plugin::setInfos(array(
 ));
 
 
+//// Configure mmCache
+//$dir = Plugin::getSetting('dir', 'mm_cache'); // trim slashes from start and end of dir
+//$cdl = Plugin::getSetting('default_lifetime', 'mm_cache');
+//$cex = Plugin::getSetting('extension', 'mm_cache');
+//MmCache::getInstance()->init(array(
+//   'cache_dir' => CMS_ROOT.DS.$dir,
+//   'lifetime'  => $cdl,
+//   'extension' => '.'.$cex,
+//));
 // Configure mmCache
-$dir = Plugin::getSetting('dir', 'mm_cache'); // trim slashes from start and end of dir
-$cdl = Plugin::getSetting('default_lifetime', 'mm_cache');
-$cex = Plugin::getSetting('extension', 'mm_cache');
-MmCache::getInstance()->init(array(
-   'cache_dir' => CMS_ROOT.DS.$dir,
-   'lifetime'  => $cdl,
-   'extension' => '.'.$cex,
-));
+if (Plugin::isEnabled('mm_cache')) {
+	$dir = Plugin::getSetting('dir', 'mm_cache'); // trim slashes from start and end of dir
+	$cdl = Plugin::getSetting('default_lifetime', 'mm_cache');
+	$cex = Plugin::getSetting('extension', 'mm_cache');
+
+	MmCache::getInstance()->init(array(
+	'cache_dir' => CMS_ROOT.DS.$dir,
+	'lifetime'  => $cdl,
+	'extension' => '.'.$cex,
+	));
+}
 
 if (defined('CMS_BACKEND')) { // BACKEND PART
 
