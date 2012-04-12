@@ -46,6 +46,8 @@ Plugin::setInfos(array(
 
 
 if (Plugin::isEnabled('mm_cache')) {
+	$mm_cache_settings = Plugin::getAllSettings('mm_cache');
+	echo '<pre>' . print_r($mm_cache_settings, true) . '</pre>';
 	$dir = Plugin::getSetting('dir', 'mm_cache'); // trim slashes from start and end of dir
 	$cdl = Plugin::getSetting('default_lifetime', 'mm_cache');
 	$cex = Plugin::getSetting('extension', 'mm_cache');
