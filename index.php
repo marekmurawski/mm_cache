@@ -4,6 +4,8 @@
  * 
  * Cache plugin for WolfCMS
  *
+ * based on works of:
+ * 
  * @author Marek Murawski <http://marekmurawski.pl>
  * @author Gilles Doge <gde@antistatique.net>
  * @version 0.0.1
