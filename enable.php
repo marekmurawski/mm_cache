@@ -1,9 +1,9 @@
 <?php
 
 /* Security measure */
-//if (!defined('IN_CMS')) {
-//    exit();
-//}
+if (!defined('IN_CMS')) {
+    exit();
+}
 
 $settings['extension'] = 'cache';
 $settings['dir'] = 'mm_cache';
@@ -16,7 +16,7 @@ if (! $exists) {
     $settings = Plugin::getAllSettings('mm_cache');
 }
 
-$snippetContent = file_get_contents(realpath(CORE_ROOT).DS.'plugins'.DS.'mm_cache'.DS.'views'.DS.'sample_snippet.php');
+$snippetContent = file_get_contents(realpath(CORE_ROOT).DS.'plugins'.DS.'mm_cache'.DS.'samples'.DS.'sample_snippet.php');
 
 $newSnippet = new Snippet;
 $newSnippet->name = 'mmCacheExamples';
