@@ -16,6 +16,17 @@ if (! $exists) {
     $settings = Plugin::getAllSettings('mm_cache');
 }
 
+$snippetContent = file_get_contents(realpath(CORE_ROOT).DS.'plugins'.DS.'mm_cache'.DS.'views'.DS.'sample_snippet.php');
+
+$newSnippet = new Snippet;
+$newSnippet->name = 'mmCacheExamples';
+$newSnippet->created_on = date('Y-m-d H:i:s');
+$newSnippet->content = $snippetContent;
+$newSnippet->content_html = $snippetContent;
+$newSnippet->created_by_id = 1;
+if ($newSnippet->save()) {Flash::set('info', __('A sample snippet "mmCacheExamples" has been created!'));};
+ 
+
 try {
     if (! is_dir(CMS_ROOT . DS . $settings['dir'])) {
     mkdir(CMS_ROOT . DS . $settings['dir']);

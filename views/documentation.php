@@ -1,6 +1,11 @@
+<script>
+	$(document).ready(function() {prettyPrint();});
+</script>
+
 <div class="documentation">
     <h1>mmCache plugin documentation</h1>    
 <p>
+
 mmCache is a general purpose cache plugin for Wolf CMS. It is useful in caching computationally intensive operations like rendering multi-level menus, which can generate many database requests.</p>
 
 <p>Another case of usage would be fetching some external content from remote server with slow connection.</p>
@@ -16,7 +21,7 @@ These are examples of mmFragment an mmCache usage. You can copy/paste following 
 <p>
 The random number is cached for 20 seconds in this example.
 </p>
-<pre>
+<pre class="prettyprint">
     &lt;?php
     if (! mmFragment::load('samplefragment') ) {
             echo "Random number to be cached: &lt;strong&gt;" . mt_rand(0, 10000) . "&lt;/strong&gt;&lt;br/&gt;";
@@ -33,7 +38,7 @@ That's it! The echo'ed text with random number will be cached for 20 seconds on 
 This is the same example with commented code
 </p>
 
-<pre>
+<pre class="prettyprint">
     &lt;?php
 
     /*
@@ -83,7 +88,7 @@ This is the same example with commented code
 Fragments can be nested. In this example the inner number is cached for 18 seconds and the outer number is cached for 7 seconds. For detalis see the source of snippet.
 </p>
 
-<pre>
+<pre class="prettyprint">
     &lt;?php
     if (! mmFragment::load('nestedfragmentouter') ) {
             echo "Outer number (7s timeout): &lt;strong&gt;" . mt_rand(0, 10000) . "&lt;/strong&gt;&lt;br/&gt;";
@@ -105,7 +110,7 @@ You can cache whole page content as a fragment with key defined as the current U
 In your layout put this code at the very beginning:
 </p>
 
-<pre>
+<pre class="prettyprint">
     &lt;?php
 
         // create safe fragment key with prefix 'wholePage/'
@@ -126,7 +131,7 @@ In your layout put this code at the very beginning:
 ... and at the end of your layout put this code:
 </p>
 
-<pre>
+<pre class="prettyprint">
     &lt;?php
         mmFragment::save(3600); //save cache of current page for 3600 seconds
         }
@@ -143,7 +148,7 @@ In this example we store a variable (array) in cache for 13 seconds. If data is 
     Then $data available regardless of being cached or just-generated.
 </p>
 
-<pre>
+<pre class="prettyprint">
     &lt;?php
         // Get the instance of mmCache
         $cache = mmCache::getInstance();

@@ -12,7 +12,9 @@
  */
 
 ?>
-
+<script>
+	$(document).ready(function() {prettyPrint();});
+</script>
 
  <p class="button"><a href="<?php echo get_url('plugin/mm_cache'); ?>"><img src="<?php echo ICONS_URI; ?>/file-folder-32.png" align="middle" alt="folder icon" /><?php echo __('List cache entries'); ?></a></p>
  
@@ -37,11 +39,13 @@
     <p>
         <?php echo __('It is done by wrapping computationally expensive fragment of code in if clause:'); ?>
     </p>
-    <pre>
+    <pre class="prettyprint">
 if (! mmFragment::load('cacheKey')) {
     // do something slow here
     // eg. render multilevel menu
-    mmFragment::save(120) // save for 120 seconds
+    mmFragment::save(120) 
+    // save fragment for 120 seconds
+    // after rendering it
 }
     </pre>
 

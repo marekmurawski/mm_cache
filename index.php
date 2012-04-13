@@ -56,7 +56,9 @@ if (Plugin::isEnabled('mm_cache')) {
 
 
 if (defined('CMS_BACKEND')) { // BACKEND PART
-
+	Plugin::addJavascript('mm_cache', 'js/prettify.js');
+	
+    
     AutoLoader::addFolder(dirname(__FILE__).'/lib');    
     Observer::observe('page_edit_after_save', 'mm_cache_clear');
     Plugin::addController('mm_cache', ' mmCache'); //small little space to avoid tab first-letter-capitalization ;)
