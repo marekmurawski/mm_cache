@@ -38,7 +38,7 @@ Plugin::setInfos(array(
 	'title'       => 'mmFragment and Data Cache',
 	'description' => 'Provides universal file cache and output buffer caching functionality',
 	'version'     => '0.0.1',
-	'license'     => 'MIT',
+	'license'     => 'GPL',
 	'author'      => 'Marek Murawski',
 	'website'     => 'http://marekmurawski.pl/',
 	//'update_url'  => 'http://dev.antistatique.net/frog/plugin-versions.xml'
