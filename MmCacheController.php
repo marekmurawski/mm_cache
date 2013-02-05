@@ -2,13 +2,13 @@
 
 /**
  * Plugin mmCache Controller
- * 
+ *
  * Inspired by AS Cache by Gilles Doge and Kohana Framework
  * Fragment helper
  *
- * @author Marek Murawski <http://www.marekmurawski.pl> 
+ * @author Marek Murawski <http://www.marekmurawski.pl>
  * @author Gilles Doge <gde@antistatique.net>, Antistatique.net
- * 
+ *
  */
 class MmCacheController extends PluginController {
 
@@ -38,7 +38,7 @@ class MmCacheController extends PluginController {
 		$cacheFiles = array();
 		$iterator = new RecursiveDirectoryIterator($rootDir);
 		foreach (new RecursiveIteratorIterator($iterator) as $filename => $cur) {
-			if (!endsWith($filename, '.htaccess')) {
+			if (!endsWith($filename, '.htaccess')&& !endsWith($filename, '.')) {
 				$age = intval($tnow - $cur->getMTime());
 				$fname = str_replace($rootDir, '', $filename);
 				$fsize = $cur->getSize();

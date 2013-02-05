@@ -3,7 +3,7 @@
 /**
  * Basic implementation of a file cache system.
  * Inspired from the symfony-project cache system.
- * 
+ *
  * @package plugins/mm_cache
  * @author Gilles Doge <gde@antistatique.net>
  * @author Fabien Potencier <fabien.potencier@symfony-project.com>
@@ -128,7 +128,7 @@ class MmFileCache {
 
         $result = true;
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($this->cache_dir)) as $file) {
-            if (!endsWith($file, '.htaccess')) {
+            if (!endsWith($file, '.htaccess') && !endsWith($file, '.')) {
                 if ('all' == $mode || time() > $this->read($file, self::READ_TIMEOUT)) {
                     if (is_dir($file)) {
                         $res = @rmdir($file);
@@ -173,9 +173,9 @@ class MmFileCache {
                 //$result = $result && $res;
         }
         //return $result;
-        //die();    
+        //die();
         if ($count > 0) return $count; else return false;
-    
+
     }
 
     /**
@@ -229,7 +229,7 @@ class MmFileCache {
      * set the cache directory and create it if not exist
      *
      * @param string path the the cache directory
-     * 
+     *
      * @return void
      * */
     public function setCacheDir($cache_dir) {
@@ -351,5 +351,5 @@ class MmFileCache {
 
 // Define a cache exception
 class MmCacheException extends Exception {
-    
+
 }
